@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  go:
+    build:
+      context: .
+    ports:
+      - 8080:8080
+    networks:
+      - go
+    environment:
+      - SERVER_PORT=8080
+    volumes:
+      - ./:/app
+    depends_on:
+      - db
+
+  db:
+    image: postgres
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    networks:
+      - go
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+networks:
+  go :
