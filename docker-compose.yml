@@ -22,11 +22,11 @@ services:
     networks:
       - go
     ports:
-      - 5432:5432
+      - 4321:4321
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-
+      
 networks:
   go :
